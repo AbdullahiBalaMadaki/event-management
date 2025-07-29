@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\Api\AttendeeController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EventController;
