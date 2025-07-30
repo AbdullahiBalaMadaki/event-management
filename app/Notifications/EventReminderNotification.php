@@ -8,9 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class EventReminderNotification extends Notification
-{
-    use Queueable;
+    class EventReminderNotification extends Notification implements ShouldQueue
+    {
+        use Queueable;
 
     /**
      * Create a new notification instance.
