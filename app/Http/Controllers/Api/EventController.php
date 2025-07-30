@@ -7,13 +7,15 @@ use App\Http\Resources\EventResource;
 use App\Http\Traits\CanLoadRelationships;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 
 class EventController extends Controller
 {
     use CanLoadRelationships;
 
     private array $relations = ['user', 'attendees', 'attendees.user'];
-
+ 
     public function __construct()
     {
         $this->middleware('auth:sanctum')->except(['index', 'show']);
@@ -61,9 +63,11 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+   public function update(Request $request, Event $event)
     {
-           $event->update(
+       // $this->authorize('update-event', $event); // Automatically checks authorization
+
+        $event->update(
             $request->validate([
                 'name' => 'sometimes|string|max:255',
                 'description' => 'nullable|string',
